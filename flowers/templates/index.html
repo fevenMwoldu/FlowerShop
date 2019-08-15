@@ -1,0 +1,32 @@
+{%extends 'base.html'%} {% block content %}{{ block.super}} {% if custom_user.user_type == "vendor" %}
+<div class="container" style="text-align: center">
+    <h1>Welcome to {{vendor.shop_name}} Flower Shop</h1>
+</div>
+<div class="container" style="align-content:center">
+
+    {% for item in inventory %}
+
+
+    <div class="card mb-3" style="width: 70rem;">
+        <img src="{{item.flower_pic.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Color: {{item.flower_color}}</h5>
+            <p class="card-text">Quantity: {{item.quantity}}</p>
+            <p class="card-text">Unit Price(KSH): ${{item.unitprice}}</p>
+
+        </div>
+    </div>
+
+    {% empty %}
+    <p style="text-align: center">Your inventory is empty. Please add some flowers.</p>
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="container" style="text-align: center">
+    <h1>Hi {{custom_user.first_name}}, Welcome to Flower Market</h1>
+</div>
+
+{% endif %} {% endblock %}
