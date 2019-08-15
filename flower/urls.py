@@ -21,4 +21,9 @@ from flowers import views as my_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'',include('flowers.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^logout/$', views.logout, {"next_page": '/'}),
+    url(r'^profile/$', my_views.add_profile, name='add-profile'),
+    url(r'^vendor/$', my_views.add_vendor, name='add-vendor'),
+    url(r'^flower/$', my_views.add_flower, name = 'add-flower'),
 ]
