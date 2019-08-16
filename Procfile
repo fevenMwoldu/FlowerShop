@@ -1,0 +1,1 @@
+web: gunicorn flower.wsgi --log-file -
